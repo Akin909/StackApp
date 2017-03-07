@@ -15,7 +15,7 @@ var makeRequest = function(url,cb) {
 }
 
 function cb (response) {
-  console.log(response);
+  // console.log(response);
   renderToDOM(response,'results-body')
   //  return response;
  }
@@ -69,6 +69,12 @@ function urlConstructor(usersQuery) {
 // makeRequest();
 
 function renderToDOM (result,id) {
-  document.getElementById(id).innerText = result.items[2].title;
+  var parent = document.getElementById(id);
+
+  for (i=0;i<result.items.length;i++) {
+    var div = document.createElement("div");
+    parent.appendChild(div)
+    div.innerText = result.items[i].title;
+  }
       // console.log(el);
 }
